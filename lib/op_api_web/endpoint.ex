@@ -42,5 +42,8 @@ defmodule OpApiWeb.Endpoint do
     key: "_op_api_key",
     signing_salt: "w8bl9W2+"
 
+  # Disable CORS
+  plug Corsica, origins: "*"
+
   plug OpApiWeb.Router
 end
