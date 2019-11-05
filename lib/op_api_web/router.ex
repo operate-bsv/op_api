@@ -17,7 +17,8 @@ defmodule OpApiWeb.Router do
     pipe_through :api
 
     resources "/ops", OpController, only: [:index, :show]
-    get "/functions/:id/function", OpController, :function
+    get "/ops/:id/fn", OpController, :function
+    get "/ops/:id/versions", OpController, :versions
   end
 
   # Other scopes may use custom stacks.

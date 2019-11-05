@@ -4,7 +4,7 @@ defmodule OpApiWeb.OpView do
 
   def render("index.json", %{ops: ops, params: params}) do
     data = case params do
-      %{"script" => _} -> render_many(ops, OpView, "op_full.json")
+      %{"fn" => _} -> render_many(ops, OpView, "op_full.json")
       _ -> render_many(ops, OpView, "op_meta.json")
     end
 
@@ -13,7 +13,7 @@ defmodule OpApiWeb.OpView do
 
   def render("show.json", %{op: op, params: params}) do
     data = case params do
-      %{"script" => _} -> render_one(op, OpView, "op_full.json")
+      %{"fn" => _} -> render_one(op, OpView, "op_full.json")
       _ -> render_one(op, OpView, "op_meta.json")
     end
 
@@ -26,8 +26,8 @@ defmodule OpApiWeb.OpView do
       hash: op.hash,
       ref: op.ref,
       name: op.name,
-      address: op.address,
-      confirmed: op.confirmed,
+      addr: op.addr,
+      conf: op.conf,
       meta: op.meta,
       blk: %{
         i: op.blk_i,
@@ -39,6 +39,6 @@ defmodule OpApiWeb.OpView do
 
   def render("op_full.json", %{op: op}) do
     render("op_meta.json", %{op: op})
-    |> Map.put(:function, op.function)
+    |> Map.put(:fn, op.fn)
   end
 end

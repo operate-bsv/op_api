@@ -11,9 +11,10 @@ defmodule OpApi.Application do
       # Start the Ecto repository
       OpApi.Repo,
       # Start the endpoint when the application starts
-      OpApiWeb.Endpoint
+      OpApiWeb.Endpoint,
       # Starts a worker by calling: OpApi.Worker.start_link(arg)
-      # {OpApi.Worker, arg},
+      OpApi.RefGenerator,
+      {OpApi.Eventchain, [handler: OpApi.Eventchain.Operate]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

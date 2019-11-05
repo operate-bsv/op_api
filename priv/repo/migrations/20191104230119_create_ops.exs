@@ -7,12 +7,12 @@ defmodule OpApi.Repo.Migrations.CreateOps do
       add :hash, :string, null: false
       add :ref, :string
 
-      add :function, :text
+      add :fn, :text
       add :name, :string
-      add :address, :string
+      add :addr, :string
       add :meta, :map
 
-      add :confirmed, :boolean, default: false
+      add :conf, :boolean, default: false
       add :blk_i, :integer
       add :blk_t, :integer
       add :tx_i, :integer
@@ -21,7 +21,7 @@ defmodule OpApi.Repo.Migrations.CreateOps do
     create index(:ops, [:hash])
     create index(:ops, [:ref], unique: true)
     create index(:ops, [:name])
-    create index(:ops, [:address])
+    create index(:ops, [:addr])
     create index(:ops, [:blk_i, :tx_i])
   end
 end

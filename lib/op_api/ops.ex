@@ -39,6 +39,16 @@ defmodule OpApi.Ops do
   end
 
   @doc """
+  TODOC
+  """
+  def list_versions(%Op{} = op) do
+    Op
+    |> where([f], f.name == ^op.name and f.addr == ^op.addr)
+    |> order_by([f], desc_nulls_first: [f.blk_i, f.tx_i])
+    |> Repo.all
+  end
+
+  @doc """
   Gets a single op.
 
   Raises `Ecto.NoResultsError` if the Op does not exist.
@@ -141,6 +151,14 @@ defmodule OpApi.Ops do
   """
   def delete_op(%Op{} = op) do
     Repo.delete(op)
+  end
+
+  @doc """
+  TODOC
+  """
+  def delete_all_ops do
+    Op
+    |> Repo.delete_all
   end
 
   @doc """

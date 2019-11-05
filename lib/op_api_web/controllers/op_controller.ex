@@ -22,11 +22,17 @@ defmodule OpApiWeb.OpController do
     conn
     |> put_resp_content_type("text/x-lua")
     |> put_resp_header("cache-control", "public, max-age=#{ cache_expiry(op) }")
-    |> text(op.function)
+    |> text(op.fn)
+  end
+
+  def versions(conn, %{"id" => id} = params) do
+    ops = Ops.get_op!(id, params)
+    |> Ops.list_versions
+    render(conn, "index.json", ops: ops, params: params)
   end
 
   defp cache_expiry(op) do
-    case op.confirmed do
+    case op.conf do
       true -> 31536000
       false -> 600
     end
