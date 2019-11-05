@@ -1,6 +1,5 @@
 defmodule OpApiWeb.OpController do
   use OpApiWeb, :controller
-
   alias OpApi.Ops
 
   action_fallback OpApiWeb.FallbackController

@@ -19,6 +19,8 @@ defmodule OpApiWeb.Router do
     resources "/ops", OpController, only: [:index, :show]
     get "/ops/:id/fn", OpController, :function
     get "/ops/:id/versions", OpController, :versions
+
+    resources "/tapes", TapeController, only: [:show]
   end
 
   # Other scopes may use custom stacks.
