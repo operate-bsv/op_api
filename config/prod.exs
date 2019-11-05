@@ -10,8 +10,12 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :op_api, OpApiWeb.Endpoint,
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  url: [host: "api.operatebsv.org", port: 80],
+  http: [:inet6, port: String.to_integer(System.get_env("PORT") || "4000")],
+  server: true,
+  code_reloader: false,
+  root: ".",
+  version: Application.spec(:fb_hub, :vsn)
 
 # Do not print debug messages in production
 config :logger, level: :info
