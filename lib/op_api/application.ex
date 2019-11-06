@@ -13,10 +13,6 @@ defmodule OpApi.Application do
       # Start the endpoint when the application starts
       OpApiWeb.Endpoint,
       # Starts a worker by calling: OpApi.Worker.start_link(arg)
-      OpApi.RefGenerator,
-      {OpApi.Eventchain, [
-        handler: OpApi.Eventchain.Operate
-      ]},
       {Operate, [
         proc_adpater: OpApi.Operate.EctoAdapter,
         #cache: Operate.Cache.ConCache,
