@@ -14,7 +14,7 @@ defmodule OpApi.Application do
       OpApiWeb.Endpoint,
       # Starts a worker by calling: OpApi.Worker.start_link(arg)
       {Operate, [
-        proc_adpater: OpApi.Operate.EctoAdapter,
+        proc_adapter: OpApi.Operate.EctoAdapter,
         #cache: Operate.Cache.ConCache,
         aliases: %{
           "19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut" => "6232de04", # b://
