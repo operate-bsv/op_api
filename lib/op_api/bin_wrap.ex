@@ -27,3 +27,11 @@ defimpl Jason.Encoder, for: [OpApi.BinWrap] do
     end
   end
 end
+
+defimpl Jason.Encoder, for: [Operate.Cell] do
+  def encode(value, opts) do
+    Map.take(value, [:ref, :params, :op])
+    |> OpApi.BinWrap.wrap
+    |> Jason.Encode.map(opts)
+  end
+end

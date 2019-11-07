@@ -4,6 +4,13 @@ defmodule OpApiWeb.TapeController do
   action_fallback OpApiWeb.FallbackController
 
   def show(conn, %{"id" => id}) do
+    with {:ok, tape} <- Operate.load_tape(id) do
+      render(conn, "show.json", result: tape.cells)
+    end
+  end
+
+
+  def run(conn, %{"id" => id}) do
     with {:ok, tape} <- Operate.load_tape(id),
          {:ok, tape} <- Operate.run_tape(tape)
     do
@@ -12,7 +19,7 @@ defmodule OpApiWeb.TapeController do
       {:error, tape} ->
         conn
         |> put_status(:unprocessable_entity)
-        |> render("show.json", error: tape.error)
+        |> render("error.json", error: tape.error)
     end
   end
 

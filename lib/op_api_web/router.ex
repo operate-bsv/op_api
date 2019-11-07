@@ -21,10 +21,6 @@ defmodule OpApiWeb.Router do
     get "/ops/:id/versions", OpController, :versions
 
     resources "/tapes", TapeController, only: [:show]
+    post "/tapes/:id", TapeController, :run
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", OpApiWeb do
-  #   pipe_through :api
-  # end
 end

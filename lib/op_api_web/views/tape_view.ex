@@ -5,7 +5,7 @@ defmodule OpApiWeb.TapeView do
     %{data: result}
   end
 
-  def render("show.json", %{error: error}) do
-    %{data: error}
+  def render("error.json", error) do
+    error
   end
 end

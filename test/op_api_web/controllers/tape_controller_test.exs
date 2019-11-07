@@ -1,4 +1,4 @@
-defmodule OpApiWeb.PageControllerTest do
+defmodule OpApiWeb.TapeControllerTest do
   use OpApiWeb.ConnCase
 
   test "GET /", %{conn: conn} do
