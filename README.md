@@ -6,55 +6,97 @@ Operate is an extensible Bitcoin meta programming protocol. It offers a way of c
 
 ## Endpoints
 
-### GET `/ops`
+<table width="100%">
+  <thead>
+    <tr>
+      <th>Endpoint</th>
+      <th>Parameters</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <h3><code>GET /ops</code></h3>
+        <p>Retrieves a list of all Ops.</p>
+      </td>
+      <td>
+        <h4>Query params</h4>
+        <ul>
+          <li><code>fn</code> - If present, the Op function is included in the response.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3><code>GET /ops/{ref}</code></h3>
+        <p>Retrieves a single Op.</p>
+      </td>
+      <td>
+        <h4>Path params</h4>
+        <ul>
+          <li><code>ref</code> - Either the Op reference, SHA-256 hash or txid.</li>
+        </ul>
+        <h4>Query params</h4>
+        <ul>
+          <li><code>fn</code> - If present, the Op function is included in the response.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3><code>GET /ops/{ref}/fn</code></h3>
+        <p>Retrieves the raw Op function.</p>
+      </td>
+      <td>
+        <h4>Path params</h4>
+        <ul>
+          <li><code>ref</code> - Either the Op reference, SHA-256 hash or txid.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3><code>GET /ops/{ref}/versions</code></h3>
+        <p>Retrieves a list of all Op versions.</p>
+      </td>
+      <td>
+        <h4>Path params</h4>
+        <ul>
+          <li><code>ref</code> - Either the Op reference, SHA-256 hash or txid.</li>
+        </ul>
+        <h4>Query params</h4>
+        <ul>
+          <li><code>fn</code> - If present, the Op function is included in the response.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3><code>GET /tapes/{txid}</code></h3>
+        <p>Retrieves a single Tape and responds with an array of tape cells.</p>
+      </td>
+      <td>
+        <h4>Path params</h4>
+        <ul>
+          <li><code>txid</code> - The transaction ID of the tape.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h3><code>POST /tapes/{txid}</code></h3>
+        <p>Runs the Tape and responds with the tape result.</p>
+      </td>
+      <td>
+        <h4>Path params</h4>
+        <ul>
+          <li><code>txid</code> - The transaction ID of the tape.</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-Retrieves a list of all Ops.
-
-#### Parameters:
-
-* `fn` - If present, the Op function is included in the response.
-
-### GET `/ops/{ref}`
-
-Retrieves the Op identified by `ref`.
-
-#### Parameters:
-
-* `ref` - Either the Op reference, SHA-256 hash or txid.
-* `fn` - If present, the Op function is included in the response.
-
-### GET `/ops/{ref}/fn`
-
-Retrieves the raw Op function for the Op identified by `ref`.
-
-#### Parameters:
-
-* `ref` - Either the Op reference, SHA-256 hash or txid.
-
-### GET `/ops/{ref}/versions`
-
-Retrieves a list of all versions of the Op identified by `ref`.
-
-#### Parameters:
-
-* `ref` - Either the Op reference, SHA-256 hash or txid.
-* `fn` - If present, the Op function is included in the response.
-
-### GET `/tapes/{txid}`
-
-Retrieves the Tape by its `txid`. Returns the tapes cells.
-
-#### Parameters:
-
-* `txid` - The transaction ID of the tape.
-
-### POST `/tapes/{txid}`
-
-Runs the Tape identified by its `txid`. Returns the tape result.
-
-#### Parameters:
-
-* `txid` - The transaction ID of the tape.
 
 ## License
 
