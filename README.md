@@ -1,6 +1,6 @@
 # Operate | API
 
-Operate is an extensible Bitcoin meta programming protocol. It offers a way of constructing programs encapsulated in Bitcoin (SV) transactions that can be be used to process data, perform calculations and operations, and return any computable value.
+Operate is an extensible Bitcoin meta programming protocol. It offers a way of running programs encapsulated in Bitcoin (SV) transactions that can be be used to process data, perform calculations and operations, and return any computable value.
 
 **Operate | API** is a Phoenix-powered web application serving API endpoints.
 
@@ -101,19 +101,19 @@ More infomation:
   </tbody>
 </table>
 
-## Usage
-
-The Pheonix application itself is purely a web API. It is intended to be used in conjunction with [Operate | Planaria](https://github.com/operate-bsv/planaria) which indexes the blockchain.
+## Developing
 
 To run the API locally:
 
 * Install dependencies with `mix deps.get`
 * Create and migrate your database with `mix ecto.setup`
 * Start Phoenix endpoint with `mix phx.server`
-* Visit [`GET /ops`](http://localhost:4000/ops) from your browser.
+* Visit [`http://localhost:4000/ops`](http://localhost:4000/ops) from your browser.
+
+The Pheonix application itself is purely a read-only web API. It is intended to be used in conjunction with [Operate | Planaria](https://github.com/operate-bsv/op_planaria) which indexes the blockchain.
 
 ## License
 
-© Copyright 2019 Chronos Labs Ltd.
+[MIT](https://github.com/operate-bsv/op_api/blob/master/LICENSE.md)
 
-BSV-ex is free software and released under the [MIT license](https://github.com/operate-bsv/api.operatebsv.org/blob/master/LICENSE.md).
+© Copyright 2019 Chronos Labs Ltd.
