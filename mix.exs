@@ -47,8 +47,8 @@ defmodule OpApi.MixProject do
       {:corsica, "~> 1.1"},
       {:distillery, "~> 2.1"},
       {:edeliver, "~> 1.7", warn_missing: false},
-      {:operate, git: "https://github.com/operate-bsv/agent.git"},
-      {:luerl, git: "https://github.com/libitx/luerl.git", branch: "develop", override: true}
+      {:operate, "~> 0.1.0-beta"},
+      {:luerl, github: "rvirding/luerl", branch: "develop", override: true},
     ]
   end
 
