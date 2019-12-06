@@ -48,7 +48,7 @@ defmodule OpApi.MixProject do
       {:distillery, "~> 2.1"},
       {:edeliver, "~> 1.7", warn_missing: false},
       {:operate, "~> 0.1.0-beta"},
-      {:luerl, github: "rvirding/luerl", branch: "develop", override: true},
+      {:luerl, github: "rvirding/luerl", branch: "develop", override: true}
     ]
   end
 
