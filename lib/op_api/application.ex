@@ -17,12 +17,15 @@ defmodule OpApi.Application do
         proc_adapter: OpApi.Operate.EctoAdapter,
         #cache: Operate.Cache.ConCache,
         aliases: %{
-          "19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut" => "6232de04", # b://
-          "1PuQa7K62MiKCtssSLKy1kh56WWU7MtUR5" => "1fec30d4", # map
-          "15PciHG22SNLQJXMoSUaWVi7WSqc7hCfva" => "577953fb", # aip
-          "1HA1P2exomAwCUycZHr8WeyFoy5vuQASE3" => "f0586d08", # haip
-          "19dbzMDDg4jZ4pvYzLb291nT8uCqDa61zH" => "5ad609a8", # preev
-          "1LtyME6b5AnMopQrBPLk4FGN8UBuhxKqrn" => "5ad609a8", # weatherSV
+          "meta" => "ec869026",
+          "15PciHG22SNLQJXMoSUaWVi7WSqc7hCfva" => "a3a83843", # AIP
+          "19HxigV4QyBv3tHpQVcUEQyq1pzZVdoAut" => "6232de04", # B://
+          "13SrNDkVzY5bHBRKNu5iXTQ7K7VqTh5tJC" => "a575f641", # Bitkey
+          "1L8eNuA8ToLGK5aV4d5d9rXUAbRZUxKrhF" => "c8bca1c8", # Bit.sv
+          "1HA1P2exomAwCUycZHr8WeyFoy5vuQASE3" => "ed469ce8", # HAIP
+          "1PuQa7K62MiKCtssSLKy1kh56WWU7MtUR5" => "b7f56e90", # MAP
+          "19dbzMDDg4jZ4pvYzLb291nT8uCqDa61zH" => "5ad609a8", # Preev
+          "1LtyME6b5AnMopQrBPLk4FGN8UBuhxKqrn" => "5ad609a8", # WeatherSV
           "c7e30124267ad8b1cc0f3fe8da6cd8513a9a82f32d11c6f25b40e2b48e39b7f0" => "1812437c" # object/put
         }
       ]},
