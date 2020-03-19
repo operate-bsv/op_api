@@ -6,8 +6,9 @@ defmodule OpApiWeb.TapeController do
   @doc """
   Loads and renders tape for inspection
   """
-  def show(conn, %{"id" => id}) do
-    with {:ok, tape} <- Operate.load_tape(id) do
+  def show(conn, %{} = params) do
+    txid = normalize_txid(params)
+    with {:ok, tape} <- Operate.load_tape(txid) do
       render(conn, "show.json", result: tape.cells)
     else
       {:error, err} ->
@@ -16,17 +17,14 @@ defmodule OpApiWeb.TapeController do
         |> render("error.json", error: err)
     end
   end
-
-  # Fallthrough
-  def show(conn, %{} = params),
-    do: show(conn, %{"id" => normalize_id(params)})
   
 
   @doc """
   Loads, executes and renders tape result
   """
-  def run(conn, %{"id" => id}) do
-    with {:ok, tape} <- Operate.load_tape(id),
+  def run(conn, %{} = params) do
+    txid = normalize_txid(params)
+    with {:ok, tape} <- Operate.load_tape(txid),
          {:ok, tape} <- Operate.run_tape(tape)
     do
       render(conn, "show.json", result: OpApi.BinWrap.wrap(tape.result))
@@ -38,18 +36,15 @@ defmodule OpApiWeb.TapeController do
     end
   end
 
-  # Fallthrough
-  def run(conn, %{} = params),
-    do: run(conn, %{"id" => normalize_id(params)})
-
 
   # Normalizes txid and vout into single string
-  defp normalize_id(%{} = params) do
+  defp normalize_txid(%{"id" => txid}), do: txid
+  defp normalize_txid(%{} = params) do
     id = [
       get_in(params, ["txid"]),
       get_in(params, ["vout"])
     ]
-    |> Enum.reject(&is_nil/1)
+    |> Enum.reject(& is_nil(&1) || String.trim(&1) == "")
     |> Enum.join("/")
   end
 

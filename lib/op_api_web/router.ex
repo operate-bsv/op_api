@@ -23,7 +23,7 @@ defmodule OpApiWeb.Router do
     resources "/tapes", TapeController, only: [:show]
     post "/tapes/:id", TapeController, :run
 
-    get "/woc/tapes/inspect", TapeController, :show
-    get "/woc/tapes/run", TapeController, :run
+    get "/woc/tape/inspect", TapeController, :show
+    get "/woc/tape/run", TapeController, :run
   end
 end
