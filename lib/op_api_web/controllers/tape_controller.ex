@@ -24,11 +24,16 @@ defmodule OpApiWeb.TapeController do
   """
   def run(conn, %{} = params) do
     txid = normalize_txid(params)
-    with {:ok, tape} <- Operate.load_tape(txid),
-         {:ok, tape} <- Operate.run_tape(tape)
+    with {:ok, tape}  <- Operate.load_tape(txid),
+          true        <- Operate.Tape.valid?(tape),
+         {:ok, tape}  <- Operate.run_tape(tape)
     do
       render(conn, "show.json", result: OpApi.BinWrap.wrap(tape.result))
     else
+      false ->
+        conn
+        |> put_status(:unprocessable_entity)
+        |> render("error.json", error: "Cannot run invalid tape.")
       {:error, tape} ->
         conn
         |> put_status(:unprocessable_entity)
