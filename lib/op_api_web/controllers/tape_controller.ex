@@ -17,7 +17,7 @@ defmodule OpApiWeb.TapeController do
         |> render("error.json", error: err)
     end
   end
-  
+
 
   @doc """
   Loads, executes and renders tape result
@@ -45,7 +45,7 @@ defmodule OpApiWeb.TapeController do
   # Normalizes txid and vout into single string
   defp normalize_txid(%{"id" => txid}), do: txid
   defp normalize_txid(%{} = params) do
-    id = [
+    [
       get_in(params, ["txid"]),
       get_in(params, ["vout"])
     ]

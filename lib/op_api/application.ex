@@ -12,7 +12,8 @@ defmodule OpApi.Application do
       OpApi.Repo,
       # Start the endpoint when the application starts
       OpApiWeb.Endpoint,
-      # Starts a worker by calling: OpApi.Worker.start_link(arg)
+      # Start additional processes
+      OpApi.Scraper,
       {Operate, [
         proc_adapter: OpApi.Operate.EctoAdapter,
         #cache: Operate.Cache.ConCache,

@@ -90,6 +90,17 @@ defmodule OpApi.Ops do
   end
 
   @doc """
+  TODOC
+  """
+  def unique_ref?(ref, txid) do
+    Op
+    |> where([f], f.ref == ^ref)
+    |> where([f], f.txid != ^txid)
+    |> Repo.exists?
+    |> Kernel.not
+  end
+
+  @doc """
   Creates a op.
 
   ## Examples
