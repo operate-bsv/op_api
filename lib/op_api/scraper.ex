@@ -2,6 +2,7 @@ defmodule OpApi.Scraper do
   require Logger
   alias OpApi.Ops
   alias OpApi.Ops.Op
+  alias OpApi.Settings
 
 
   @query %{
@@ -23,13 +24,14 @@ defmodule OpApi.Scraper do
 
 
   def handle_tape(:start, tape) do
-    tape = case nil do
-      {:ok, head} ->
-        Ops.delete_ops_from(head)
-        put_in(tape.head, head)
-      _ ->
+    tape = case Settings.get("head") do
+      nil ->
         Ops.delete_all_ops
         tape
+      head ->
+        head = String.to_integer(head)
+        Ops.delete_ops_from(head)
+        put_in(tape.head, head)
     end
 
     {:ok, tape}
@@ -37,7 +39,8 @@ defmodule OpApi.Scraper do
 
 
   def handle_tape(:update, tape) do
-    tape
+    Settings.set("head", tape.head)
+    {:ok, tape}
   end
 
 
