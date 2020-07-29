@@ -20,7 +20,7 @@ defmodule OpApi.MixProject do
   def application do
     [
       mod: {OpApi.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :gen_stage, :mint, :castore]
     ]
   end
 
@@ -45,8 +45,6 @@ defmodule OpApi.MixProject do
       {:plug_cowboy, "~> 2.0"},
 
       {:corsica, "~> 1.1"},
-      {:distillery, "~> 2.1"},
-      {:edeliver, "~> 1.7", warn_missing: false},
       {:operate, "~> 0.1.0-beta"},
       {:luerl, github: "rvirding/luerl", branch: "develop", override: true},
       {:terminus, "~> 0.1"}
@@ -61,6 +59,7 @@ defmodule OpApi.MixProject do
   # See the documentation for `Mix` for more info on aliases.
   defp aliases do
     [
+      setup: ["deps.get", "ecto.setup", "cmd npm install --prefix assets"],
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate", "test"]

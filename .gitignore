@@ -1,14 +1,13 @@
 .DS_Store
-.deliver
 
 # The directory Mix will write compiled artifacts to.
 /_build/
 
-# Edlivery releases
-.deliver/releases/
-
 # If you run "mix test --cover", coverage assets end up here.
 /cover/
+
+# Secret config files
+/config/*.secret.exs
 
 # The directory Mix downloads your dependencies sources to.
 /deps/
@@ -33,7 +32,5 @@ op_api-*.tar
 # this depending on your deployment strategy.
 /priv/static/
 
-# Eventchain files
+# Docker env
 /.env
-/bus/
-tape.txt

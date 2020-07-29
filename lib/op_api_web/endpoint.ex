@@ -1,6 +1,29 @@
 defmodule OpApiWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :op_api
 
+
+  @doc """
+  Callback invoked for dynamically configuring the endpoint.
+
+  It receives the endpoint configuration and checks if
+  configuration should be loaded from the system environment.
+  """
+  def init(_key, config) do
+    if config[:load_from_system_env] do
+      host = Application.get_env(:op_api, :app_host) || raise "expected the APP_HOST environment variable to be set"
+      port = Application.get_env(:op_api, :app_port) || raise "expected the APP_PORT environment variable to be set"
+      port = String.to_integer(port)
+      scheme = if port == 443, do: "https", else: "http"
+
+      config = config
+      |> Keyword.put(:url, [scheme: scheme, host: host, port: port])
+      {:ok, config}
+    else
+      {:ok, config}
+    end
+  end
+
+
   socket "/socket", OpApiWeb.UserSocket,
     websocket: true,
     longpoll: false

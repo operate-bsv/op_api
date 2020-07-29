@@ -10,15 +10,13 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :op_api, OpApiWeb.Endpoint,
+  load_from_system_env: true,
   url: [host: "api.operatebsv.org", port: 80],
-  http: [:inet6, port: String.to_integer(System.get_env("PORT") || "4000")],
-  server: true,
-  code_reloader: false,
-  root: ".",
-  version: Application.spec(:fb_hub, :vsn)
+  server: true
 
 # Do not print debug messages in production
 config :logger, level: :info
+
 
 # ## SSL Support
 #
@@ -56,4 +54,4 @@ config :logger, level: :info
 
 # Finally import the config/prod.secret.exs which loads secrets
 # and configuration from environment variables.
-import_config "prod.secret.exs"
+#import_config "prod.secret.exs"

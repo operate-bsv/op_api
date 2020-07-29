@@ -16,7 +16,7 @@ defmodule OpApi.Scraper do
   }
 
 
-  use Terminus.Planaria, token: Application.get_env(:op_api, :planaria_token),
+  use Terminus.Planaria, token: {:op_api, :planaria_token},
                          from: 590000,
                          host: :bob,
                          query: @query

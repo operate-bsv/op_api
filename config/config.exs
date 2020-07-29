@@ -17,8 +17,6 @@ config :op_api, OpApiWeb.Endpoint,
   render_errors: [view: OpApiWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: OpApi.PubSub, adapter: Phoenix.PubSub.PG2]
 
-config :op_api, :planaria_token, System.fetch_env!("PLANARIA_TOKEN")
-
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
