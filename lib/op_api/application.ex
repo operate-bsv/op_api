@@ -15,8 +15,11 @@ defmodule OpApi.Application do
       # Start additional processes
       OpApi.Scraper,
       {Operate, [
+        tape_adapter: {Operate.Adapter.Terminus, [
+          token: Application.get_env(:op_api, :planaria_token)
+        ]},
         proc_adapter: OpApi.Operate.EctoAdapter,
-        #cache: Operate.Cache.ConCache,
+        cache: Operate.Cache.ConCache,
         aliases: %{
           "meta" => "ec869026",
           "15PciHG22SNLQJXMoSUaWVi7WSqc7hCfva" => "a3a83843", # AIP
